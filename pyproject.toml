@@ -1,13 +1,20 @@
 [tool.poetry]
 name = "nui-federation-py-sdk"
 version = "0.1.0"
-description = ""
+description = "This SDK connects to the NUI Federation API for getting or creating, revoke, generating batch for NUI from the API."
 authors = ["UGD <sd@digital.gov.mg>"]
 readme = "README.md"
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.13"
+requests = "^2.31"
+python-dotenv = "^1.0"
 
+[tool.poetry.dev-dependencies]
+pytest = "^7.0"
+pytest-mock = "^3.0"
+pytest-cov = "^4.0"
 
 [build-system]
 requires = ["poetry-core"]
