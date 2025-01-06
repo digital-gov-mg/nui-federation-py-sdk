@@ -4,11 +4,17 @@ from src.uin_service import UINService
 
 @pytest.fixture
 def uin_service():
-    return UINService(base_url="https://example.com/api", api_key="test_api_key")
+    return UINService(
+        base_url="https://example.com/api", api_key="test_api_key"
+    )
 
 
 def test_get_or_create_uin(uin_service, mocker):
-    mock_response = {"code": 0, "message": "Success", "data": {"uin": "123456"}}
+    mock_response = {
+        "code": 0,
+        "message": "Success",
+        "data": {"uin": "123456"},
+    }
     mocker.patch(
         "src.base.requests.request",
         return_value=mocker.Mock(ok=True, json=lambda: mock_response),

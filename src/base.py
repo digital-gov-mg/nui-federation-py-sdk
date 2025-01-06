@@ -17,7 +17,9 @@ class Base:
             "api-key": self.api_key,
         }
 
-        response = requests.request(method, url, headers=headers, json=data, params=params)
+        response = requests.request(
+            method, url, headers=headers, json=data, params=params
+        )
 
         if response.ok:
             return response.json()

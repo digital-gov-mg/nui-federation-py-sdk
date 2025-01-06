@@ -1,0 +1,29 @@
+stages:
+  - lint
+  - publish
+
+variables:
+  PYPI_TOKEN: $CI_JOB_TOKEN
+
+before_script:
+  - curl -sSL https://install.python-poetry.org | python3 -
+  - poetry install
+  - source "$(poetry env info --path)/bin/activate"
+
+lint:
+  stage: lint
+  script:
+    - poetry run lint
+  only:
+    - merge_requests
+    - branches
+
+publish:
+  stage: publish
+  image: python:3.13.0
+  script:
+    - poetry build
+    - poetry config repositories.gitlab //gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/pypi
+    - poetry publish --repository gitlab -u gitlab-ci-token -p ${CI_JOB_TOKEN}
+  only:
+    - tags%
