@@ -1,7 +1,4 @@
 def validate_citizen_data(citizen_data):
-    """
-    Validate the structure of citizen data before sending it to the API.
-    """
     required_keys = [
         "externalId",
         "firstname",
