@@ -40,7 +40,7 @@ except Exception as e:
 # Example 2: Revoke a UIN
 uin = "123456789"
 try:
-    revoke_response = uin_service.revoke_uin(uin)
+    revoke_response = nui_federation.uin.revoke_uin(uin)
     print("Revoke Response:", revoke_response)
 except Exception as e:
     print("Error revoking UIN:", str(e))
@@ -48,7 +48,7 @@ except Exception as e:
 # Example 3: Generate UIN Batch
 count = 5
 try:
-    batch_response = uin_service.generate_uin_batch(count)
+    batch_response = nui_federation.uin.generate_uin_batch(count)
     print("Batch Response:", batch_response)
 except Exception as e:
     print("Error generating UIN batch:", str(e))
