@@ -15,6 +15,8 @@ class Request:
         self.access_token = None
         self.is_already_fetching_access_token = False
 
+        self.session = requests.Session()
+
         if not all(
             [self.base_url, self.api_key, self.client_id, self.client_secret]
         ):
@@ -33,9 +35,10 @@ class Request:
             headers["Authorization"] = f"Bearer {self.access_token}"
 
         try:
-            response = requests.request(
+            response = self.session.request(
                 method, url, headers=headers, json=data, params=params
             )
+
             if response.status_code in {401, 403}:
                 if not self.is_already_fetching_access_token:
                     self.is_already_fetching_access_token = True
@@ -49,7 +52,8 @@ class Request:
                         self.is_already_fetching_access_token = False
 
                     headers["Authorization"] = f"Bearer {self.access_token}"
-                    response = requests.request(
+
+                    response = self.session.request(
                         method, url, headers=headers, json=data, params=params
                     )
 
