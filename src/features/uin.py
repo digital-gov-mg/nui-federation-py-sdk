@@ -1,7 +1,7 @@
-from src.base import Base
+from src.request import Request
 
 
-class UIN(Base):
+class UIN(Request):
     def get_or_create_uin(self, citizen_datas: list[dict]):
         return self.request(endpoint="/uins", method="PUT", data=citizen_datas)
 

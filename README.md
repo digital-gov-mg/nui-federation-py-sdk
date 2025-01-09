@@ -15,11 +15,13 @@ pip install nui_federation_py_sdk
 ```py
 from nui_federation_py_sdk import NUIFederation
 
-# Initialize UINService with baseUrl and apiKey
+# Initialize NUIFederation
 base_url = "https://example.com/api"
 api_key = "your-api-key"
+client_id = "your-client-id"
+client_secret = "your-client-secret"
 
-nui_federation = NUIFederation(base_url=base_url, api_key=api_key)
+nui_federation = NUIFederation(base_url=base_url, api_key=api_key, client_id=client_id, client_secret=client_secret)
 
 # Example 1: Get or Create UIN
 citizen_datas = [{
