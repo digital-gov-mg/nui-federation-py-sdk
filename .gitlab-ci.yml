@@ -10,8 +10,8 @@ variables:
 
 before_script:
   - pip install poetry
-  - source `poetry env info --path`/bin/activate
   - poetry install
+  - source `poetry env info --path`/bin/activate
 
 lint:
   stage: lint
