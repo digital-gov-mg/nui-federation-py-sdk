@@ -16,6 +16,7 @@ before_script:
 lint:
   stage: lint
   script:
+    - poetry install
     - poetry run lint
   only:
     - merge_requests
