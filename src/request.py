@@ -24,6 +24,13 @@ class Request:
                 "Please provide all required configurations parameters"
             )
 
+        if not self.access_token:
+            self.access_token = fetch_access_token(
+                base_url=self.base_url,
+                client_id=self.client_id,
+                client_secret=self.client_secret,
+            )
+
     def request(self, method, endpoint, data=None, params=None):
         url = f"{self.base_url}{endpoint}"
         headers = {
